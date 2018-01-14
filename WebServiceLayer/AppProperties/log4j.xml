@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	
+	<!-- Console appender should not be in use except for development env.-->
+	<appender name="FYNGER_CONSOLE" class="org.apache.log4j.ConsoleAppender">		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param 
+				name="ConversionPattern" 
+				value="%d [%t] %-5p %c(%L)- %m%n"/>
+		</layout>		
+	</appender>
+	
+	<!-- RollingFile Appender is for log the event in File.		 
+		 MaxFileSize specifies the size of log file.
+		 MaxBackupIndex specifies the number of files to be retained.
+		 Layout and conversion pattern specifies the format of log event.
+		 check the log4j url for more conversion patterns
+		 http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html  
+	-->
+	<appender name="FYNGER_FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/fynger/logs.txt"/>		
+		<param name="MaxFileSize" value="2500KB"/>
+		<param name="MaxBackupIndex" value="25"/>
+		<param name="Append" value="true"/>		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param 
+				name="ConversionPattern" 
+				value="%d [%t] %-5p %c(%L)- %m%n"/>
+		</layout>
+	</appender>
+
+	
+	<!-- logger specified the package. Events will be logged from specified package only.
+		 Info Level specifies that info and abvoe event will logged.
+	  -->
+	<!-- To get the log event on console uncomment the below appender ref for console.-->  	      
+	 <!-- <logger name="com.fynger">
+       	<level value="debug"/>
+       	<appender-ref ref="FYNGER_FILE"/>
+       	<appender-ref ref="FYNGER_CONSOLE"/>          
+    </logger> -->
+	
+	<root>	
+	     <appender-ref ref="FYNGER_FILE"/>   
+	     <appender-ref ref="FYNGER_CONSOLE"/>
+	</root>
+	
+</log4j:configuration>
+
