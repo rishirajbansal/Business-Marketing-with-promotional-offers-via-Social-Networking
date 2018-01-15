@@ -4,6 +4,7 @@ The primary objective behind the idea was to provide ‘Business Marketing with 
 
 
 Major Functional areas : 
+
 Flash Deal – A feature that allows merchants to communicate with the consumers in real time.
 Search Engine – Based on the key word and location
 User Location identification based on Google Maps API
